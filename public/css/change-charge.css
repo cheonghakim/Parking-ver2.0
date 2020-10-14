@@ -1,0 +1,13 @@
+.change-form-align-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.change-form-align-item {
+  margin: 10px 0px;
+}
+
+.change-label-margin {
+  margin-left: 20px;
+}

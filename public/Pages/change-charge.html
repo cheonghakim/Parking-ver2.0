@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css"
+        integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous" />
+    <title>Change charge</title>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>제니스 주차 타워</h1>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="main-container-no-img row-align">
+            <div class="main-container-stretch">
+                <div class="common-title-container">
+                    <div class="common-title-item">
+                        <div class="title-box js-admin-back-page">
+                            <i class="fas fa-arrow-left">
+                                <h1>뒤로</h1>
+                            </i>
+                            <p class="title-text">요금 및 시간 변경</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="center-align">
+                    <div class="change-form-align-container">
+                        <div class="change-form-align-item">
+                            <form class="js-change-time-form">
+                                <label>현재 기준 시간: <h3 class="js-current_standard_time">${current_base_time}</h3></label>
+                                <label class="change-label-margin">변경할 기준 시간: <input type="text"
+                                        name="changed_time"></label>
+                                <button type="submit" class="js-change-time-btn">변경</button>
+                            </form>
+                        </div>
+                        <div class="change-form-align-item">
+                            <form class="js-change-charge-form">
+                                <label>현재 시간당 요금: <h3 class="js-current_standard_time">${current_time_charge}</h3></label>
+                                <label class="change-label-margin">변경할 시간당 요금: <input type="text"
+                                        name="changed_time_charge"></label>
+
+                                <label>현재 기준 요금: <h3 class="js-current_standard_time">${current_base_charge}</h3></label>
+                                <label class="change-label-margin">변경할 기준 요금: <input type="text"
+                                        name="changed_charge"></label>
+                                <button type="submit" class="js-change-charge-btn">변경</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer-container">
+        <h1>Copyright ⓒ SINCE 1999 ZENITH PARKING TOWER. All rights reserved</h1>
+    </footer>
+    <script src="../Client/app.js" type="module"></script>
+</body>
+
+</html>

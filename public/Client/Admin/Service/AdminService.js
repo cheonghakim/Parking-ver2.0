@@ -1,0 +1,70 @@
+import { AdminApi } from '../Api/AdminApi.js';
+import { CarDTO } from '../../Common/Model/CarDTO.js';
+import { MemberDTO } from '../../Member/Model/MemberDTO.js';
+
+export class AdminService {
+  constructor() {
+    this.api = new AdminApi();
+  }
+
+  async adminLogin(userData) {
+    let result;
+
+    try {
+      result = await this.api.adminLogin(userData);
+    } catch (e) {
+      console.log('error:' + e);
+    }
+    return result;
+  }
+
+  async manageUsers() {
+    let result;
+    let result_arr = [];
+    try {
+      result = await this.api.manageUsers();
+    } catch (e) {
+      console.log('error:' + e);
+    }
+
+    if (result === 'failed') {
+      console.log('Result is fail!' + result);
+      return;
+    } else {
+      for (let i = 0, max = result.length; i < max; i++) {
+        let dto = new MemberDTO();
+        dto.setUserCarNumber(result[i].user_car_number);
+        dto.setPayDate(result[i].pay_date);
+        dto.setExpireDate(result[i].expire_date);
+        result_arr.push(dto);
+      }
+      return result_arr;
+    }
+  }
+
+  async search(userData) {
+    let result;
+    let result_arr = [];
+
+    try {
+      result = await this.api.search(userData);
+    } catch (e) {
+      console.log('error:' + e);
+    }
+
+    if (result === 'failed') {
+      console.log('Result is fail:' + result);
+      return;
+    } else {
+      for (let i = 0, max = result.length; i < max; i++) {
+        let dto = new MemberDTO();
+        dto.setUserCarNumber(result[i].user_car_number);
+        dto.setPayDate(result[i].pay_date);
+        dto.setExpireDate(result[i].expire_date);
+        dto.setUserState(result[i].user_state);
+        result_arr.push(dto);
+      }
+      return result_arr;
+    }
+  }
+}

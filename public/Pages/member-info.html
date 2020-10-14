@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css"
+        integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous" />
+    <title>Member info</title>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>제니스 주차 타워</h1>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="main-container-no-img row-align">
+            <div class="main-container-stretch">
+                <div class="common-title-container">
+                    <div class="common-title-item">
+                        <div class="title-box js-member-back-page">
+                            <i class="fas fa-arrow-left">
+                                <h1>뒤로</h1>
+                            </i>
+                            <p class="title-text">멤버 정보</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="main-center">
+                    <div class="column-align">
+                        <div class="search-result-container">
+                            <label>차량 번호: <h3 class="search-result-item js-member-search-result">${user_car_number}</h3></label>
+                            <label>등록 일자: <h3 class="search-result-item js-member-search-result">${pay_date}</h3></label>
+                            <label>만료 일자: <h3 class="search-result-item js-member-search-result">${expire_date}</h3></label>
+                            <label>멤버 상태: <h3 class="search-result-item js-member-search-result">${user_state}</h3></label>
+                            <label>결제 수단: <h3 class="search-result-item js-member-search-result">${pay_method}</h3></label>
+                            <label>남은 기간: <h3 class="search-result-item js-member-search-result">${left_days}</h3></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer-container">
+        <h1>Copyright ⓒ SINCE 1999 ZENITH PARKING TOWER. All rights reserved</h1>
+    </footer>
+    <script src="../Client/app.js" type="module"></script>
+</body>
+
+</html>

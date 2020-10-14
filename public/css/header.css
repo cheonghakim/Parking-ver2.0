@@ -1,0 +1,38 @@
+.header-container {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(14, 14, 14, 0.8);
+}
+
+.admin-logo {
+  width: 80%;
+  height: 50px;
+  margin-left: 20px;
+  margin-top: 15px;
+}
+
+.logo {
+  height: 50px;
+  width: 350px;
+  margin: 15px 0px 0px 15px;
+}
+
+.admin-logo > h1 {
+  font-size: 35px;
+  color: rgba(256, 256, 256, 1);
+}
+
+.logo > h1 {
+  font-size: 45px;
+  color: rgba(256, 256, 256, 1);
+}
+
+.header-menu {
+  color: white;
+  font-size: 20px;
+  margin-right: 20px;
+  cursor: pointer;
+}

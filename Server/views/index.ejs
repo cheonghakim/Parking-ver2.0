@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.13.1/css/all.css"
+      integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q"
+      crossorigin="anonymous"
+    />
+    <title>Index</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="header-container">
+        <div class="logo">
+          <h1>제니스 주차 타워</h1>
+        </div>
+        <nav class="header-menu js-header-menu">로그아웃</nav>
+      </div>
+    </header>
+    <main>
+      <div class="main">
+        <div class="main-container">
+          <div class="wrapper">
+            <div class="js-main-buttons button-sec">
+              <div class="button-sec-item">
+                <button class="main-btn" value="guest">
+                  <i class="fas fa-car"></i>
+                  <span class="button-text">방문자</span>
+                </button>
+              </div>
+              <div class="button-sec-item">
+                <button class="main-btn" value="member">
+                  <i class="fas fa-user-check"></i>
+                  <span class="button-text">멤버</span>
+                </button>
+              </div>
+              <div class="button-sec-item">
+                <button class="main-btn" value="admin">
+                  <i class="fas fa-users-cog"></i>
+                  <span class="button-text">관리자</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="query-main-container">
+      <div class="query-wrapper">
+        <div class="js-main-buttons query-button-sec">
+          <div class="query-button-sec-item">
+            <button class="main-btn" value="guest">
+              <i class="fas fa-car"></i>
+              <span class="query-button-text">방문자</span>
+            </button>
+          </div>
+          <div class="query-button-sec-item">
+            <button class="main-btn" value="member">
+              <i class="fas fa-user-check"></i>
+              <span class="query-button-text">멤버</span>
+            </button>
+          </div>
+          <div class="query-button-sec-item">
+            <button class="main-btn" value="admin">
+              <i class="fas fa-users-cog"></i>
+              <span class="query-button-text">관리자</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer-container">
+      <h1>Copyright ⓒ SINCE 1999 ZENITH PARKING TOWER. All rights reserved</h1>
+    </footer>
+    <script src="./Client/app.js" type="module"></script>
+    <script>
+      function getContextPath() {
+        var hostIndex =
+          location.href.indexOf(location.host) + location.host.length;
+        return location.href.substring(
+          hostIndex,
+          location.href.indexOf('/', hostIndex + 1)
+        );
+      }
+
+      console.log(getContextPath());
+    </script>
+  </body>
+</html>

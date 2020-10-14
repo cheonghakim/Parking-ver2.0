@@ -1,0 +1,10 @@
+.postpone-column-align {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.postpone-form {
+  margin-left: -20px;
+}

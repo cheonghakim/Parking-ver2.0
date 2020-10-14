@@ -1,0 +1,116 @@
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-container-stretch {
+  width: 100%;
+  padding: 10px;
+}
+
+.center-align {
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+}
+
+/* postpone, search, renew */
+.search-result-container {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-result-item {
+  margin: 10px 0px;
+}
+
+.margin-top {
+  margin-top: 25px;
+}
+
+.column-align {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-block {
+  display: block;
+  margin: 10px 0px;
+}
+
+.main-container-no-img {
+  background-color: rgba(12, 12, 12, 0.7);
+  height: 80vh;
+  width: 100%;
+}
+
+.title-text {
+  font-size: 35px;
+  color: white;
+  margin-left: 15px;
+  text-align: center;
+  text-align: left;
+}
+
+.row-align {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.title-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0px;
+}
+
+.title-box > i {
+  font-size: 20px;
+  color: white;
+  display: flex;
+  cursor: pointer;
+}
+
+.title-box > i > h1 {
+  font-size: 20px;
+  color: white;
+  margin-left: 10px;
+}
+
+.title-center-align {
+  max-width: 60vh;
+  margin-top: 20px;
+}
+
+.center-align {
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+  min-width: 30%;
+}
+
+.common-title-container {
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.common-title-item {
+  width: 600px;
+}
+
+.main-center {
+  display: flex;
+  justify-content: center;
+}
+
+.form-align {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 300px;
+}

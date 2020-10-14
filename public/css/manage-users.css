@@ -1,0 +1,33 @@
+.list-input {
+  background-color: transparent;
+  border: none;
+}
+
+/* .list-input:focus {
+    outline: transparent;
+} */
+
+.manage-list-container {
+  width: 100%;
+  text-align: center;
+  color: white;
+}
+
+.modal-manage-list-item-row {
+  margin: 10px 0px;
+  font-size: 20px;
+  color: black;
+}
+
+.manage-list-item-row {
+  margin: 10px 0px;
+  font-size: 20px;
+}
+
+.manage-td-height {
+  line-height: 70px;
+}
+
+.td-height {
+  height: 10px;
+}

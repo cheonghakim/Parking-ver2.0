@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css"
+        integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous" />
+    <title>Check car</title>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>제니스 주차 타워</h1>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="main-container-no-img row-align">
+            <div class="main-container-stretch">
+                <div class="common-title-container">
+                    <div class="common-title-item">
+                        <div class="title-box js-back-page">
+                            <i class="fas fa-arrow-left">
+                                <h1>뒤로</h1>
+                            </i>
+                            <p class="title-text">진입 전 점검</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-center">
+                    <div class="check-form">
+                        <form class="form-align js-check-car-form">
+                            <div class="check-parking-input"><label> 주차중인 차 수: <input type="text" readonly="readonly"
+                                        class="js-current-parking-cars"></label></div>
+                            <div class="check-weight-input"><label>차량 무게: <input type="text" name="car_weight"
+                                        placeholder="단위: Kg"></label></div>
+                            <div><label>차량 높이: <input type="text" name="car_height" placeholder="단위: m"></label>
+                                <button type="submit" class="js-check-car-btn">검사</button></div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer-container">
+        <h1>Copyright ⓒ SINCE 1999 ZENITH PARKING TOWER. All rights reserved</h1>
+    </footer>
+    <script src="../Client/app.js" type="module"></script>
+</body>
+
+</html>
