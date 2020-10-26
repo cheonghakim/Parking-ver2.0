@@ -1,6 +1,6 @@
-import { AdminApi } from '../Api/AdminApi.js';
-import { CarDTO } from '../../Common/Model/CarDTO.js';
-import { MemberDTO } from '../../Member/Model/MemberDTO.js';
+import { AdminApi } from "../Api/AdminApi.js";
+import { CarDTO } from "../../Common/Model/CarDTO.js";
+import { MemberDTO } from "../../Member/Model/MemberDTO.js";
 
 export class AdminService {
   constructor() {
@@ -13,7 +13,7 @@ export class AdminService {
     try {
       result = await this.api.adminLogin(userData);
     } catch (e) {
-      console.log('error:' + e);
+      console.log("error:" + e);
     }
     return result;
   }
@@ -21,18 +21,19 @@ export class AdminService {
   async manageUsers() {
     let result;
     let result_arr = [];
+    let dto = new MemberDTO();
+
     try {
       result = await this.api.manageUsers();
     } catch (e) {
-      console.log('error:' + e);
+      console.log("error:" + e);
     }
 
-    if (result === 'failed') {
-      console.log('Result is fail!' + result);
+    if (result === "failed") {
+      console.log("Result is fail!" + result);
       return;
     } else {
       for (let i = 0, max = result.length; i < max; i++) {
-        let dto = new MemberDTO();
         dto.setUserCarNumber(result[i].user_car_number);
         dto.setPayDate(result[i].pay_date);
         dto.setExpireDate(result[i].expire_date);
@@ -45,19 +46,19 @@ export class AdminService {
   async search(userData) {
     let result;
     let result_arr = [];
+    let dto = new MemberDTO();
 
     try {
       result = await this.api.search(userData);
     } catch (e) {
-      console.log('error:' + e);
+      console.log("error:" + e);
     }
 
-    if (result === 'failed') {
-      console.log('Result is fail:' + result);
+    if (result === "failed") {
+      console.log("Result is fail:" + result);
       return;
     } else {
       for (let i = 0, max = result.length; i < max; i++) {
-        let dto = new MemberDTO();
         dto.setUserCarNumber(result[i].user_car_number);
         dto.setPayDate(result[i].pay_date);
         dto.setExpireDate(result[i].expire_date);

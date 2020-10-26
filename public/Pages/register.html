@@ -34,12 +34,13 @@
                 </div>
                 <div class="main-center">
                     <div class="margin-top">
-                        <form class="js-register-form">
+                        <form class="js-register-form width-400">
                             <div class="block-form">
-                                <label>차량 번호: <input type="text" name="car_number"></label>
+                                <label class="minus-margin-left-35">차량 번호: <input type="text" name="car_number" required></label>
                             </div>
 
-                            <label>기간: <select name="register_class" class="select-box" required>
+                            
+                                <label>기간: <select name="register_class" class="select-box" required>
                                     <option value="">선택</option>
                                     <option value="1">1주일</option>
                                     <option value="2">2주일</option>
@@ -50,6 +51,8 @@
                                 </select></label>
 
                             <button type="submit" class="margin-btn js-register-btn">등록</button>
+                           
+                            
                         </form>
                     </div>
                 </div>

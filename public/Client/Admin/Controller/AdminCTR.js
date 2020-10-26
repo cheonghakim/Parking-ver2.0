@@ -121,15 +121,29 @@ export class AdminCTR {
   }
 
   eventBack() {
-    alert("서비스 준비중");
-    window.location.reload();
+    // window.history.back();
+    console.log("current-url" + window.history.state.page);
+    this.checkAndAddEventListener();
+  }
+
+  checkAndAddEventListener() {
+    let url = window.history.state.page;
+    console.log("back-url " + url);
+    let data;
+
+    if (url === "/zenith/admin") {
+      data = { page: "/zenith/admin" };
+      window.history.pushState(data, "admin_main", url);
+      this.executeAdminMain();
+    } else {
+      console.log("invalid url");
+    }
   }
 
   //화면을 구성하고 리스너를 추가한다
   executeAdminLogin() {
     this.comp.makeAdminLogin();
     this.comp.adminLogin(this.adminLogin, this, self);
-    this.comp.eventBack(this.eventBack, this.self);
   }
 
   executeAdminMain() {

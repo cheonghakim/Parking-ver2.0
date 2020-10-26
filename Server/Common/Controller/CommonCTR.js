@@ -3,18 +3,18 @@ const CommonDAO = require("../Model/CommonDAO.js");
 
 class CommonCTR {
   constructor() {
-    this.dto = new CommonDTO();
     this.dao = new CommonDAO();
   }
 
   async getLog(userData) {
     let result;
+    const dto = new CommonDTO();
     let { car_number } = userData;
 
-    this.dto.setCarNumber(car_number);
+    dto.setCarNumber(car_number);
 
     try {
-      result = await this.dao.getLog(this.dto);
+      result = await this.dao.getLog(dto);
     } catch (e) {
       console.log("error:" + e);
     }
@@ -28,13 +28,14 @@ class CommonCTR {
 
   async wirteOutLog(userData) {
     let result;
+    const dto = new CommonDTO();
     let { car_number, out_date } = userData;
 
-    this.dto.setCarNumber(car_number);
-    this.dto.setOutDate(out_date);
+    dto.setCarNumber(car_number);
+    dto.setOutDate(out_date);
 
     try {
-      result = await this.dao.writeOutLog(this.dto);
+      result = await this.dao.writeOutLog(dto);
     } catch (e) {
       console.log("error:" + e);
     }
@@ -47,13 +48,14 @@ class CommonCTR {
   }
 
   async checkIsMember(userData) {
+    const dto = new CommonDTO();
     let result_check_member;
     let { car_number } = userData;
 
-    this.dto.setCarNumber(car_number);
+    dto.setCarNumber(car_number);
 
     try {
-      result_check_member = await this.dao.checkIsMember(this.dto);
+      result_check_member = await this.dao.checkIsMember(dto);
     } catch (e) {
       console.log("error:" + e);
     }
@@ -73,12 +75,13 @@ class CommonCTR {
 
   async getMemberData(userData) {
     let result;
+    const dto = new CommonDTO();
     let { um_key } = userData;
 
-    this.dto.setUmKey(um_key);
+    dto.setUmKey(um_key);
 
     try {
-      result = await this.dao.getMemberData(userData);
+      result = await this.dao.getMemberData(dto);
     } catch (e) {
       console.log("error:" + e);
     }
@@ -92,20 +95,15 @@ class CommonCTR {
 
   async inCar(userData) {
     let result;
-    let check_is_car;
+    const dto = new CommonDTO();
     let { car_number } = userData;
+    let check_is_car = await this.checkIsCar(userData);
 
-    this.dto.setCarNumber(car_number);
-
-    try {
-      check_is_car = await this.dao.checkIsCar(this.dto);
-    } catch (e) {
-      console.log("error:" + e);
-    }
+    dto.setCarNumber(car_number);
 
     if (check_is_car === "none") {
       try {
-        result = await this.dao.inCar(this.dto);
+        result = await this.dao.inCar(dto);
       } catch (e) {
         console.log("error:" + e);
       }
@@ -117,6 +115,26 @@ class CommonCTR {
       }
     } else {
       return "already";
+    }
+  }
+
+  async checkIsCar(userData) {
+    let result;
+    const dto = new CommonDTO();
+    let { car_number } = userData;
+
+    dto.setCarNumber(car_number);
+
+    try {
+      result = await this.dao.checkIsCar(dto);
+    } catch (e) {
+      console.log("error:" + e);
+    }
+
+    if (!result[0]) {
+      return "none";
+    } else {
+      return "being";
     }
   }
 }

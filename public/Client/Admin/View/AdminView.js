@@ -34,61 +34,60 @@ export class AdminView {
   }
 
   makeAdminMain() {
-    return `    <main>
-        <div class="admin-main">
-            <div class="admin-main-container">
-                <div class="wrapper">
-                    <div class="admin-button-sec js-admin-main-buttons">
-
-                        <div class="button-sec-item">
-                            <button class="main-btn" value="change_charge">
-                                <i class="fas fa-dollar-sign"></i>
-                                <span class="button-text">요금수정</span>
-                            </button>
-                        </div>
-                        <div class="button-sec-item">
-                            <button class="main-btn" value="manage_users">
-                                <i class="fas fa-user-cog"></i>
-                                <span class="button-text">유저 관리</span>
-                            </button>
-                        </div>
-                        <div class="button-sec-item">
-                            <button class="main-btn" value="search">
-                                <i class="fas fa-search"></i>
-                                <span class="button-text">유저 검색</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+    return `
+    <main>
+      <div class="admin-main">
+        <div class="admin-main-container">
+          <div class="wrapper">
+            <div class="admin-button-sec js-admin-main-buttons">
+              <div class="button-sec-item">
+                <button class="main-btn" value="change_charge">
+                  <i class="fas fa-dollar-sign"></i>
+                  <span class="button-text">요금수정</span>
+                </button>
+              </div>
+              <div class="button-sec-item">
+                <button class="main-btn" value="manage_users">
+                  <i class="fas fa-user-cog"></i>
+                  <span class="button-text">유저 관리</span>
+                </button>
+              </div>
+              <div class="button-sec-item">
+                <button class="main-btn" value="search">
+                  <i class="fas fa-search"></i>
+                  <span class="button-text">유저 검색</span>
+                </button>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </main>
-
 
     <!-- 반응형 메인 -->
     <div class="query-admin-main-container">
-        <div class="query-admin-wrapper">
-            <div class="query-admin-button-sec js-admin-main-buttons">
-                <div class="query-button-sec-item">
-                    <button class="query-admin-main-btn" value="change_charge">
-                        <i class="fas fa-dollar-sign"></i>
-                        <span class="admin-button-text">요금 수정</span>
-                    </button>
-                </div>
-                <div class="query-button-sec-item">
-                    <button class="query-admin-main-btn" value="manage_users">
-                        <i class="fas fa-user-cog"></i>
-                        <span class="admin-button-text">유저 관리</span>
-                    </button>
-                </div>
-                <div class="query-button-sec-item">
-                    <button class="query-admin-main-btn" value="search">
-                        <i class="fas fa-search"></i>
-                        <span class="admin-button-text">유저 검색</span>
-                    </button>
-                </div>
-            </div>
+      <div class="query-admin-wrapper">
+        <div class="query-admin-button-sec js-admin-main-buttons">
+          <div class="query-button-sec-item">
+            <button class="query-admin-main-btn" value="change_charge">
+              <i class="fas fa-dollar-sign"></i>
+              <span class="admin-button-text">요금 수정</span>
+            </button>
+          </div>
+          <div class="query-button-sec-item">
+            <button class="query-admin-main-btn" value="manage_users">
+              <i class="fas fa-user-cog"></i>
+              <span class="admin-button-text">유저 관리</span>
+            </button>
+          </div>
+          <div class="query-button-sec-item">
+            <button class="query-admin-main-btn" value="search">
+              <i class="fas fa-search"></i>
+              <span class="admin-button-text">유저 검색</span>
+            </button>
+          </div>
         </div>
+      </div>
     </div>`;
   }
 
@@ -97,53 +96,56 @@ export class AdminView {
     current_time_charge,
     current_base_charge
   ) {
-    return `
-        <main>
-            <div class="main-container-no-img row-align">
-                <div class="main-container-stretch">
-                    <div class="common-title-container">
-                        <div class="common-title-item">
-                            <div class="title-box js-admin-back-page">
-                                <i class="fas fa-arrow-left">
-                                    <h1>뒤로</h1>
-                                </i>
-                                <p class="title-text">요금 및 시간 변경</p>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="center-align">
-                        <div class="change-form-align-container">
-                            <div class="change-form-align-item">
-                                <form class="js-change-time-form">
-                                    <label>현재 기준 시간: <h3 class="js-current_standard_time">${current_base_time}</h3></label>
-                                    <label class="change-label-margin">변경할 기준 시간: <input type="text"
-                                            name="changed_time"></label>
-                                    <button type="submit" class="js-change-time-btn">변경</button>
-                                </form>
-                            </div>
-                            <div class="change-form-align-item">
-                                <form class="js-change-charge-form">
-                                    <label>현재 시간당 요금: <h3 class="js-current_standard_time">${current_time_charge}</h3></label>
-                                    <label class="change-label-margin">변경할 시간당 요금: <input type="text"
-                                            name="changed_time_charge"></label>
-    
-                                    <label>현재 기준 요금: <h3 class="js-current_standard_time">${current_base_charge}</h3></label>
-                                    <label class="change-label-margin">변경할 기준 요금: <input type="text"
-                                            name="changed_charge"></label>
-                                    <button type="submit" class="js-change-charge-btn">변경</button>
-                                </form>
-                            </div>
-                        </div>
+    return `    <main>
+    <div class="main-container-no-img row-align">
+        <div class="main-container-stretch">
+            <div class="common-title-container">
+                <div class="common-title-item">
+                    <div class="title-box js-admin-back-page">
+                        <i class="fas fa-arrow-left">
+                            <h1>뒤로</h1>
+                        </i>
+                        <p class="title-text">요금 및 시간 변경</p>
                     </div>
                 </div>
             </div>
-        </main>
-`;
+
+            <div class="center-align">
+                <div class="column-align">
+                    <div class="change-form-align-container">
+                    <div class="change-form-align-item minus-margin-right">
+                        <form class="js-change-time-form">
+                            <label>현재 기준 시간: <h3 class="dynamic-data js-current_standard_time">${current_base_time}</h3></label>
+                            <label class="change-label-margin">변경할 기준 시간: <input type="text"
+                                    name="changed_time" required placeholder="단위: 밀리초"></label>
+                            <button type="submit" class="js-change-time-btn">변경</button>
+                        </form>
+                    </div>
+                    <div class="change-form-align-item minus-margin">
+                        <form class="js-change-charge-form">
+                            <label>현재 시간당 요금: <h3 class="dynamic-data js-current_standard_time">${current_time_charge}</h3></label>
+                            <label class=" change-label-margin">변경할 시간당 요금: <input type="text"
+                                    name="changed_time_charge"  required placeholder="단위: 원"></label>
+                            </div>
+                                    <div class="change-form-align-item">
+                            <label >현재 기준 요금: <h3 class="dynamic-data js-current_standard_time">${current_base_charge}</h3></label>
+                            <label class="change-label-margin">변경할 기준 요금: <input type="text"
+                                    name="changed_charge" required placeholder="단위: 원"></label>
+                            <button type="submit" class="js-change-charge-btn">변경</button>
+                        </form>
+                    </div>
+                </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</main>`;
   }
 
   makeManageUsers() {
-    return `    <main>
+    return `
+    <main>
         <div class="main-container-no-img">
             <div class="common-title-container">
                 <div class="common-title-item">
@@ -172,7 +174,7 @@ export class AdminView {
             <div class="main-container-stretch">
                 <div class="common-title-container">
                     <div class="common-title-item">
-                        <div class="title-box js-back-page">
+                        <div class="title-box js-admin-back-page">
                             <p class="modal-title">유저 로그</p>
                         </div>
                     </div>
@@ -188,6 +190,7 @@ export class AdminView {
             </div>
         </div>
     </div>
+
         `;
   } //modal open은 js-manage-user-log
 
@@ -207,70 +210,70 @@ export class AdminView {
   } //js-log-car-number, js-log-in-date, js-log-out-date
 
   makeSearch(car_number, member_state, pay_date, expire_date) {
-    return `
-    <main>
-        <div class="main-container-no-img row-align">
-            <div class="main-container-stretch">
-                <div class="common-title-container">
-                    <div class="common-title-item">
-                        <div class="title-box js-admin-back-page">
-                            <i class="fas fa-arrow-left">
-                                <h1>뒤로</h1>
-                            </i>
-                            <p class="title-text">검색</p>
-                        </div>
+    return `    <main>
+    <div class="main-container-no-img row-align">
+        <div class="main-container-stretch">
+            <div class="common-title-container">
+                <div class="common-title-item">
+                    <div class="title-box js-admin-back-page">
+                        <i class="fas fa-arrow-left">
+                            <h1>뒤로</h1>
+                        </i>
+                        <p class="title-text">검색</p>
                     </div>
                 </div>
-                <div class="main-center">
-                    <div class="margin-top">
-                        <form class="js-search-form">
-                            <label>차량 번호: <input type="text" name="car_number"></label>
-                            <button type="submit" class="js-search-btn">검색</button>
-                        </form>
-                        <div class="search-result-container">
-                            <label>차량 번호: <h3 class="search-result-item js-search-result">${car_number}</h3></label>
-                            <label>멤버 상태: <h3 class="search-result-item js-search-result">${member_state}</h3></label>
-                            <label>등록 일자: <h3 class="search-result-item js-search-result">${pay_date}</h3></label>
-                            <label>만료 일자: <h3 class="search-result-item js-search-result">${expire_date}</h3></label>
-                        </div>
+            </div>
+            <div class="main-center">
+                <div class="margin-top">
+                    <form class="js-search-form">
+                        <label>차량 번호: <input type="text" name="car_number" required></label>
+                        <button type="submit" class="js-search-btn">검색</button>
+                    </form>
+                    <div class="search-result-container">
+                        <label>차량 번호: <h3 class="dynamic-data search-result-item js-search-result">${car_number}</h3></label>
+                        <label>멤버 상태: <h3 class="dynamic-data search-result-item js-search-result">${member_state}</h3></label>
+                        <label>등록 일자: <h3 class="dynamic-data search-result-item js-search-result">${pay_date}</h3></label>
+                        <label>만료 일자: <h3 class="dynamic-data search-result-item js-search-result">${expire_date}</h3></label>
                     </div>
                 </div>
             </div>
         </div>
-    </main>`;
+    </div>
+</main>`;
   }
 
   makeAdminLogin() {
-    return `
-        <main>
-            <div class="main-container-no-img row-align">
-    
-                <div class="main-container-stretch">
-                    <div class="common-title-container">
-                        <div class="common-title-item">
-                            <div class="title-box js-admin-back-page">
-                                <i class="fas fa-arrow-left">
-                                    <h1>뒤로</h1>
-                                </i>
-                                <p class="title-text">관리자 로그인</p>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="center-align">
-                        <form class="form-align js-admin-login-form">
-                            <div>
-                                <label class="admin-login-id">ID: <input type="text" name="admin_id"></label>
-                            </div>
-                            <div>
-                                <label class="admin-login-password">Password: <input type="password"
-                                        name="admin_pw"></label>
-                                <button type="submit" class="js-admin-login-btn">로그인</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+    return `    <main>
+    <div class="main-container-no-img row-align">
+      <div class="main-container-stretch">
+        <div class="common-title-container">
+          <div class="common-title-item">
+            <div class="title-box js-back-page">
+              <i class="fas fa-arrow-left">
+                <h1>뒤로</h1>
+              </i>
+              <p class="title-text">관리자 로그인</p>
             </div>
-        </main>`;
+          </div>
+        </div>
+
+        <div class="center-align">
+          <form class="form-align js-admin-login-form">
+            <div>
+              <label class="admin-login-id"
+                >ID: <input type="text" name="admin_id" required placeholder="영문, 숫자 3글자 이상 12자 이하"
+              /></label>
+            </div>
+            <div>
+              <label class="admin-login-password"
+                >Password: <input type="password" name="admin_pw" required placeholder="영문, 숫자 8글자 이상 12자 이하"
+              /></label>
+              <button type="submit" class="js-admin-login-btn">로그인</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>`;
   }
 }

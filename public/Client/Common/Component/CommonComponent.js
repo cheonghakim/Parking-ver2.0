@@ -36,7 +36,7 @@ export class CommonComponent {
   checkCar(callback, context) {
     if (document.querySelector(".js-check-car-btn") !== undefined) {
       let check_car_btn = document.querySelector(".js-check-car-btn");
-      check_car_btn.addEventListener("click", (e) => {
+      check_car_btn.addEventListener("click", e => {
         e.preventDefault();
         let check_car_form = document.querySelector(".js-check-car-form");
         let userData = new FormData(check_car_form);
@@ -57,7 +57,7 @@ export class CommonComponent {
   inCar(callback, context) {
     if (document.querySelector(".js-in-car-btn") !== undefined) {
       let in_car_btn = document.querySelector(".js-in-car-btn");
-      in_car_btn.addEventListener("click", (e) => {
+      in_car_btn.addEventListener("click", e => {
         e.preventDefault();
         let in_car_form = document.querySelector(".js-in-car-form");
         let userData = new FormData(in_car_form);
@@ -78,7 +78,7 @@ export class CommonComponent {
   outCar(callback, context) {
     if (document.querySelector(".js-out-car-btn") !== undefined) {
       let out_car_btn = document.querySelector(".js-out-car-btn");
-      out_car_btn.addEventListener("click", (e) => {
+      out_car_btn.addEventListener("click", e => {
         e.preventDefault();
         let out_car_form = document.querySelector(".js-out-car-form");
         let userData = new FormData(out_car_form);
@@ -99,7 +99,7 @@ export class CommonComponent {
   payCash(callback, context) {
     if (document.querySelector(".js-pay-cash-btn") !== undefined) {
       let pay_cash_btn = document.querySelector(".js-pay-cash-btn");
-      pay_cash_btn.addEventListener("click", (e) => {
+      pay_cash_btn.addEventListener("click", e => {
         e.preventDefault();
         let pay_cash_form = document.querySelector(".js-pay-cash-form");
         let userData = new FormData(pay_cash_form);
@@ -120,7 +120,7 @@ export class CommonComponent {
   payCard(callback, context) {
     if (document.querySelector(".js-pay-card-btn") !== undefined) {
       let pay_card_btn = document.querySelector(".js-pay-card-btn");
-      pay_card_btn.addEventListener("click", (e) => {
+      pay_card_btn.addEventListener("click", e => {
         e.preventDefault();
         let pay_card_form = document.querySelector(".js-pay-card-form");
         let userData = new FormData(pay_card_form);
@@ -141,7 +141,7 @@ export class CommonComponent {
   register(callback, context) {
     if (document.querySelector(".js-register-btn") !== undefined) {
       let register_btn = document.querySelector(".js-register-btn");
-      register_btn.addEventListener("click", (e) => {
+      register_btn.addEventListener("click", e => {
         e.preventDefault();
         let register_form = document.querySelector(".js-register-form");
         let userData = new FormData(register_form);
@@ -162,7 +162,7 @@ export class CommonComponent {
   logout(callback, context) {
     if (document.querySelector(".js-logout-btn") !== undefined) {
       let logout = document.querySelector(".js-logout-btn");
-      logout.addEventListener("click", (e) => {
+      logout.addEventListener("click", e => {
         e.preventDefault();
         if (typeof callback === "string") {
           callback = context[callback()];
@@ -177,7 +177,7 @@ export class CommonComponent {
   eventMainButtons(callback, context) {
     if (document.querySelectorAll(".js-main-buttons") !== null) {
       let main = document.querySelectorAll(".js-main-buttons");
-      main[0].addEventListener("click", (e) => {
+      main[0].addEventListener("click", e => {
         e.preventDefault();
         let clicked;
         let value = e.target.value;
@@ -186,6 +186,7 @@ export class CommonComponent {
         switch (value) {
           case "guest":
             clicked = "guest";
+            this.pushState(clicked);
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -194,6 +195,7 @@ export class CommonComponent {
             break;
           case "member":
             clicked = "member";
+            this.pushState(clicked);
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -202,6 +204,7 @@ export class CommonComponent {
             break;
           case "admin":
             clicked = "admin";
+            this.pushState(clicked);
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -214,7 +217,7 @@ export class CommonComponent {
         }
       });
 
-      main[1].addEventListener("click", (e) => {
+      main[1].addEventListener("click", e => {
         e.preventDefault();
         let clicked;
         let value = e.target.value;
@@ -223,6 +226,7 @@ export class CommonComponent {
         switch (value) {
           case "guest":
             clicked = "guest";
+            this.pushState(clicked);
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -232,6 +236,7 @@ export class CommonComponent {
 
           case "member":
             clicked = "member";
+            this.pushState(clicked);
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -241,6 +246,7 @@ export class CommonComponent {
 
           case "admin":
             clicked = "admin";
+            this.pushState(clicked);
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -259,7 +265,7 @@ export class CommonComponent {
   eventGuestButtons(callback, context) {
     if (document.querySelectorAll(".js-guest-main-buttons") !== undefined) {
       let guest_buttons = document.querySelectorAll(".js-guest-main-buttons");
-      guest_buttons[0].addEventListener("click", (e) => {
+      guest_buttons[0].addEventListener("click", e => {
         e.preventDefault();
         let clicked;
         let value = e.target.value;
@@ -267,7 +273,8 @@ export class CommonComponent {
 
         switch (value) {
           case "in_car":
-            clicked = "in_car";
+            clicked = "check_car";
+            this.pushState(clicked);
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -277,6 +284,7 @@ export class CommonComponent {
 
           case "out_car":
             clicked = "out_car";
+            this.pushState(clicked);
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -286,6 +294,7 @@ export class CommonComponent {
 
           case "register":
             clicked = "register";
+            this.pushState(clicked);
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -299,7 +308,7 @@ export class CommonComponent {
         }
       });
 
-      guest_buttons[1].addEventListener("click", (e) => {
+      guest_buttons[1].addEventListener("click", e => {
         e.preventDefault();
         let clicked;
         let value = e.target.value;
@@ -307,7 +316,8 @@ export class CommonComponent {
 
         switch (value) {
           case "in_car":
-            clicked = "in_car";
+            clicked = "check_car";
+            this.pushState(clicked);
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -317,6 +327,7 @@ export class CommonComponent {
 
           case "out_car":
             clicked = "out_car";
+            this.pushState(clicked);
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -326,6 +337,7 @@ export class CommonComponent {
 
           case "register":
             clicked = "register";
+            this.pushState(clicked);
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -344,7 +356,7 @@ export class CommonComponent {
   eventPayMethod(callback, context) {
     if (document.querySelectorAll(".js-select-pay-method") !== null) {
       let pay_method = document.querySelectorAll(".js-select-pay-method");
-      pay_method[0].addEventListener("click", (e) => {
+      pay_method[0].addEventListener("click", e => {
         e.preventDefault();
         let clicked;
         let value = e.target.value;
@@ -352,6 +364,7 @@ export class CommonComponent {
         switch (value) {
           case "card":
             clicked = "card";
+            this.pushState(clicked);
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -361,6 +374,7 @@ export class CommonComponent {
 
           case "cash":
             clicked = "cash";
+            this.pushState(clicked);
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -374,7 +388,7 @@ export class CommonComponent {
         }
       });
 
-      pay_method[1].addEventListener("click", (e) => {
+      pay_method[1].addEventListener("click", e => {
         e.preventDefault();
         let clicked;
         let value = e.target.value;
@@ -382,6 +396,7 @@ export class CommonComponent {
         switch (value) {
           case "card":
             clicked = "card";
+            this.pushState(clicked);
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -391,6 +406,7 @@ export class CommonComponent {
 
           case "cash":
             clicked = "cash";
+            this.pushState(clicked);
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -408,8 +424,9 @@ export class CommonComponent {
 
   eventBack(callback, context) {
     if (document.querySelector(".js-back-page") !== undefined) {
+      console.log("event-back-listening");
       let back = document.querySelector(".js-back-page");
-      back.addEventListener("click", (e) => {
+      back.addEventListener("click", e => {
         e.preventDefault();
         console.log("Event back:" + e.target.tagName);
         if (e.target.tagName === "I" || e.target.tagName === "H1") {
@@ -514,7 +531,7 @@ export class CommonComponent {
     bill_input.value = bill;
   }
 
-  makePayWithCard() {
+  makePayWithCard(result) {
     let bill = localStorage.getItem("bill");
     window.document.body.innerHTML = "";
     let header = this.common_view.makeCommonHeader();
@@ -524,6 +541,8 @@ export class CommonComponent {
     div.innerHTML = header + main + footer;
 
     document.body.appendChild(div);
+    let bill_input = document.querySelector(".js-bill");
+    bill_input.value = bill;
   }
 
   makeRegister() {
@@ -546,5 +565,114 @@ export class CommonComponent {
     div.innerHTML = header + main + footer;
 
     document.body.appendChild(div);
+  }
+
+  makeBackEvent(result) {
+    window.document.body.innerHTML = "";
+    let div = document.createElement("div");
+    div.innerHTML = result;
+    document.body.appendChild(div);
+  }
+
+  pushState(clicked) {
+    const title = clicked;
+    const guest = "/zenith/guest";
+    const select_pay_method = "/zenith/pay/method";
+    const check_car = "/zenith/check/car";
+    const main = "/zenith";
+    let data;
+    let url;
+
+    switch (clicked) {
+      case "check_car":
+        url = "/zenith/check/car";
+        data = { page: guest };
+        window.history.pushState(data, title, url);
+        break;
+      case "in_car":
+        url = "/zenith/in/car";
+        data = { page: check_car };
+        window.history.pushState(data, title, url);
+        break;
+      case "out_car":
+        url = "/zenith/out/car";
+        data = { page: guest };
+        window.history.pushState(data, title, url);
+        break;
+
+      case "register":
+        url = "/zenith/register";
+        data = { page: guest };
+        window.history.pushState(data, title, url);
+        break;
+      case "guest":
+        url = "/zenith/guest";
+        data = { page: guest };
+        window.history.pushState(data, title, url);
+        break;
+      case "pay_cash":
+        url = "/zenith/pay/cash";
+        data = { page: select_pay_method };
+        window.history.pushState(data, title, url);
+        break;
+      case "pay_card":
+        url = "/zenith/pay/card";
+        data = { page: select_pay_method };
+        window.history.pushState(data, title, url);
+        break;
+      case "member":
+        url = "/zenith/member/login";
+        data = { page: main };
+        window.history.pushState(data, title, url);
+        break;
+      case "admin":
+        url = "/zenith/admin/login";
+        data = { page: main };
+        window.history.pushState(data, title, url);
+        break;
+      case "pay_method":
+        url = "/zenith/pay/method";
+        data = { page: select_pay_method };
+        window.history.pushState(data, title, url);
+        break;
+      case "main":
+        url = "/zenith";
+        break;
+    }
+    // switch (clicked) {
+    //   case "check_car":
+    //     url = "/zenith/check/car";
+    //     break;
+    //   case "in_car":
+    //     url = "/zenith/in/car";
+    //     break;
+    //   case "out_car":
+    //     url = "/zenith/out/car";
+    //     break;
+    //   case "pay_cash":
+    //     url = "/zenith/pay/cash";
+    //     break;
+    //   case "pay_card":
+    //     url = "/zenith/pay/card";
+    //     break;
+    //   case "register":
+    //     url = "/zenith/register";
+    //     break;
+    //   case "guest":
+    //     url = "/zenith/guest";
+    //     break;
+    //   case "member":
+    //     url = "/zenith/member/login";
+    //     break;
+    //   case "admin":
+    //     url = "/zenith/admin/login";
+    //     break;
+    //   case "pay_method":
+    //     url = "/zenith/pay/method";
+    //     break;
+    //   case "main":
+    //     url = "/zenith";
+    //     break;
+    // }
   }
 }

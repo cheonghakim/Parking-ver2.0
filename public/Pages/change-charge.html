@@ -34,28 +34,32 @@
                 </div>
 
                 <div class="center-align">
-                    <div class="change-form-align-container">
-                        <div class="change-form-align-item">
+                    <div class="column-align">
+                        <div class="change-form-align-container">
+                        <div class="change-form-align-item minus-margin-right">
                             <form class="js-change-time-form">
-                                <label>현재 기준 시간: <h3 class="js-current_standard_time">${current_base_time}</h3></label>
+                                <label>현재 기준 시간: <h3 class="dynamic-data js-current_standard_time">${current_base_time}</h3></label>
                                 <label class="change-label-margin">변경할 기준 시간: <input type="text"
-                                        name="changed_time"></label>
+                                        name="changed_time" required placeholder="단위: 밀리초"></label>
                                 <button type="submit" class="js-change-time-btn">변경</button>
                             </form>
                         </div>
-                        <div class="change-form-align-item">
+                        <div class="change-form-align-item minus-margin">
                             <form class="js-change-charge-form">
-                                <label>현재 시간당 요금: <h3 class="js-current_standard_time">${current_time_charge}</h3></label>
-                                <label class="change-label-margin">변경할 시간당 요금: <input type="text"
-                                        name="changed_time_charge"></label>
-
-                                <label>현재 기준 요금: <h3 class="js-current_standard_time">${current_base_charge}</h3></label>
+                                <label>현재 시간당 요금: <h3 class="dynamic-data js-current_standard_time">${current_time_charge}</h3></label>
+                                <label class=" change-label-margin">변경할 시간당 요금: <input type="text"
+                                        name="changed_time_charge"  required placeholder="단위: 원"></label>
+                                </div>
+                                        <div class="change-form-align-item">
+                                <label >현재 기준 요금: <h3 class="dynamic-data js-current_standard_time">${current_base_charge}</h3></label>
                                 <label class="change-label-margin">변경할 기준 요금: <input type="text"
-                                        name="changed_charge"></label>
+                                        name="changed_charge" required placeholder="단위: 원"></label>
                                 <button type="submit" class="js-change-charge-btn">변경</button>
                             </form>
                         </div>
                     </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>

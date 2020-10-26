@@ -111,10 +111,10 @@ export class MemberCTR {
         this.executePostpone();
         break;
       case "renew":
-        this.excuteRenew();
+        this.executeRenew();
         break;
       case "member_info":
-        this.excuteMemberInfo();
+        this.executeMemberInfo();
         break;
       default:
         console.log("You clicked invalid area!");
@@ -122,9 +122,24 @@ export class MemberCTR {
     }
   }
 
-  async eventBack() {
-    alert("서비스 준비중..");
-    window.location.reload();
+  eventBack() {
+    // window.history.back();
+    console.log("current-url" + window.history.state.page);
+    this.checkAndAddEventListener();
+  }
+
+  checkAndAddEventListener() {
+    let url = window.history.state.page;
+    console.log("back-url " + url);
+    let data;
+
+    if (url === "/zenith/member") {
+      data = { page: "/zenith/member" };
+      window.history.pushState(data, "member_main", url);
+      this.executeMemberMain();
+    } else {
+      console.log("invalid url");
+    }
   }
 
   //connect with other controller
@@ -136,10 +151,9 @@ export class MemberCTR {
   executeMemberLogin() {
     this.comp.makeMemberLogin();
     this.comp.memberLogin(this.memberLogin, this.self);
-    this.comp.eventBack(this.eventBack, this.self);
   }
 
-  excuteRenew() {
+  executeRenew() {
     this.comp.makeRenew();
     this.comp.renew(this.renew, this.self);
     this.comp.memberSearch(this.memberSearch, this.self);
@@ -152,7 +166,7 @@ export class MemberCTR {
     this.comp.eventBack(this.eventBack, this.self);
   }
 
-  excuteMemberInfo(info_result) {
+  executeMemberInfo(info_result) {
     this.comp.makeMemberInfo(info_result);
     this.comp.eventBack(this.eventBack, this.self);
   }

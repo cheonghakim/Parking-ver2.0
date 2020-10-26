@@ -10,7 +10,7 @@ router.post("/login", jsonParser, function (req, res, next) {
   console.log(userData);
   const ctr = new AdminCTR();
 
-  ctr.loginAdmin(userData).then((result) => {
+  ctr.loginAdmin(userData).then(result => {
     console.log("ADMIN-ROUTER:" + result);
     if (result === undefined || result === null) {
       res.send("failed");
@@ -29,7 +29,7 @@ router.get("/manage/users", function (req, res, next) {
   const ctr = AdminCTR();
   let str;
 
-  ctr.manageUsers().then((result) => {
+  ctr.manageUsers().then(result => {
     if (result === undefined || result === null) {
       res.send("failed");
     } else {

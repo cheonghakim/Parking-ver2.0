@@ -1,16 +1,17 @@
-import { Ajax } from '../Lib/Ajax.js';
+import { Ajax } from "../Lib/Ajax.js";
 
 export class CommonApi {
   constructor() {
     this.ajax = new Ajax();
   }
+
   async callMain() {
     let result;
 
     try {
-      result = await this.ajax.sendAjaxGet('/zenith');
+      result = await this.ajax.sendAjaxGet("/zenith");
     } catch (e) {
-      console.log('error:' + e);
+      console.log("error:" + e);
     }
 
     return result;
@@ -20,9 +21,9 @@ export class CommonApi {
     let result;
 
     try {
-      result = await this.ajax.sendAjaxPost('/zenith/get/log', userData);
+      result = await this.ajax.sendAjaxPost("/zenith/get/log", userData);
     } catch (e) {
-      console.log('error:' + e);
+      console.log("error:" + e);
     }
 
     return result;
@@ -32,12 +33,9 @@ export class CommonApi {
     let result;
 
     try {
-      result = await this.ajax.sendAjaxPost(
-        '/zenith/write/outlog',
-        userData
-      );
+      result = await this.ajax.sendAjaxPost("/zenith/write/outlog", userData);
     } catch (e) {
-      console.log('error:' + e);
+      console.log("error:" + e);
     }
 
     return result;
@@ -48,11 +46,11 @@ export class CommonApi {
 
     try {
       result = await this.ajax.sendAjaxPost(
-        '/zenith/check/is/member',
+        "/zenith/check/is/member",
         userData
       );
     } catch (e) {
-      console.log('error: ' + e);
+      console.log("error: " + e);
     }
 
     return result;
@@ -62,9 +60,9 @@ export class CommonApi {
     let result;
 
     try {
-      result = await this.ajax.sendAjaxPost('/zenith/in/car', userData);
+      result = await this.ajax.sendAjaxPost("/zenith/in/car", userData);
     } catch (e) {
-      console.log('error: ' + e);
+      console.log("error: " + e);
     }
 
     return result;
@@ -74,12 +72,9 @@ export class CommonApi {
     let result;
 
     try {
-      result = await this.ajax.sendAjaxPost(
-        'zenith/register/member',
-        userData
-      );
+      result = await this.ajax.sendAjaxPost("zenith/register/member", userData);
     } catch (e) {
-      console.log('error:' + e);
+      console.log("error:" + e);
     }
 
     return result;

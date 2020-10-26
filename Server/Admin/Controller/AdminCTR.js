@@ -2,9 +2,11 @@ const AdminDAO = require("../Model/AdminDAO.js");
 const AdminDTO = require("../Model/AdminDTO.js");
 
 class Admin {
+  constructor() {
+    this.dao = new AdminDAO();
+  }
   async loginAdmin(userData) {
     let result;
-    const dao = new AdminDAO();
     const dto = new AdminDTO();
 
     let { admin_id, admin_pw } = userData;
@@ -13,7 +15,7 @@ class Admin {
     dto.setAdminPw(admin_pw);
 
     try {
-      result = await dao.loginAdmin(dto);
+      result = await this.dao.loginAdmin(dto);
     } catch (e) {
       console.log("error: " + result);
     }
@@ -31,7 +33,6 @@ class Admin {
 
   async getLog(userData) {
     let result;
-    const dao = new AdminDAO();
     const dto = new AdminDTO();
 
     let { car_number } = userData;
@@ -39,7 +40,7 @@ class Admin {
     dto.setCarNumber(car_number);
 
     try {
-      result = await dao.searchLog(car_number);
+      result = await this.dao.searchLog(car_number);
     } catch (e) {
       console.log("error: " + e);
     }
@@ -53,10 +54,9 @@ class Admin {
 
   async getAllMember() {
     let result;
-    const dao = new AdminDAO();
 
     try {
-      result = await dao.searchAllLog();
+      result = await this.dao.searchAllLog();
     } catch (e) {
       console.log("error:" + e);
     }

@@ -16,6 +16,8 @@ export class CommonCTR {
     //to save temporaily
     this.register_data;
     this.out_car_data;
+    this.bill;
+    this.action;
 
     //event delegation
     this.comp.eventMainButtons(this.eventMainButtons, this.self);
@@ -32,6 +34,7 @@ export class CommonCTR {
 
     if (result === "can_come_in") {
       this.executeInCar();
+      this.comp.pushState("in_car");
     } else if (result === "can't_come_in") {
       this.executeMain();
     }
@@ -72,10 +75,11 @@ export class CommonCTR {
       console.log("CTR-RESULT:" + result);
       switch (result[0]) {
         case "guest":
-          this.executeSelectPayMethod(result[1], "out_car");
+          this.action = "out_car";
+          this.executeSelectPayMethod(result[1], this.action);
           break;
         case "expired":
-          this.executeSelectPayMethod(result[1], "out_car");
+          this.executeSelectPayMethod(result[1], this.action);
         case "member":
           alert(`안녕히 가세요.`);
           this.executeMain();
@@ -136,10 +140,13 @@ export class CommonCTR {
   async register(userData) {
     let check_car = this.validation.checkCarNumber(userData, "guest");
     let bill = this.event.getRegisterBill(userData);
+    this.bill = bill;
+    this.action = "register";
     this.register_data = userData;
 
     if (check_car === 1) {
-      this.executeSelectPayMethod(bill, "register");
+      this.executeSelectPayMethod(this.bill, this.action);
+      this.comp.pushState("pay_method");
     }
   }
 
@@ -163,6 +170,7 @@ export class CommonCTR {
     } catch (e) {
       console.log("error:" + e);
     }
+
     console.log("CTR-RESULT:" + result);
     this.executeMain();
   }
@@ -177,9 +185,11 @@ export class CommonCTR {
         break;
       case "member":
         this.member.executeMemberLogin();
+        this.comp.eventBack(this.eventBack, this.self);
         break;
       case "admin":
         this.admin.executeAdminLogin();
+        this.comp.eventBack(this.eventBack, this.self);
         break;
       default:
         console.log("Invalid area!");
@@ -203,7 +213,7 @@ export class CommonCTR {
 
   eventGuestButtons(clicked_by_user) {
     switch (clicked_by_user) {
-      case "in_car":
+      case "check_car":
         this.executeCheckCar();
         break;
       case "out_car":
@@ -219,7 +229,29 @@ export class CommonCTR {
   }
 
   eventBack() {
-    this.executeMain();
+    // window.history.back();
+    console.log("current-url: " + window.history.state.page);
+    this.checkAndAddEventListener();
+  }
+
+  checkAndAddEventListener() {
+    let url = window.history.state.page;
+    console.log("back-url: " + url);
+
+    if (url === "/zenith") {
+      this.comp.pushState("main");
+      this.executeMain();
+    } else if (url === "/zenith/guest") {
+      this.comp.pushState("guest");
+      this.executeGuestMain();
+    } else if (url === "/zenith/check/car") {
+      this.comp.pushState("check_car");
+      this.executeCheckCar();
+    } else if (url === "/zenith/pay/method") {
+      console.log("working well");
+      this.comp.pushState("pay_method");
+      this.executeSelectPayMethod(this.bill, this.action);
+    }
   }
 
   //화면과 리스너를 구성
@@ -253,6 +285,8 @@ export class CommonCTR {
   }
 
   executeSelectPayMethod(bill, action) {
+    console.log("normally working");
+    console.log("bill:" + bill);
     this.comp.makeSelectPayMethod(bill, action);
     this.comp.eventPayMethod(this.eventPayMethod, this.self);
   }

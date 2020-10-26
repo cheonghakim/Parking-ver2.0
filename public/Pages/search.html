@@ -34,14 +34,14 @@
                 <div class="main-center">
                     <div class="margin-top">
                         <form class="js-search-form">
-                            <label>차량 번호: <input type="text" name="car_number"></label>
+                            <label>차량 번호: <input type="text" name="car_number" required></label>
                             <button type="submit" class="js-search-btn">검색</button>
                         </form>
                         <div class="search-result-container">
-                            <label>차량 번호: <h3 class="search-result-item js-search-result">${car_number}</h3></label>
-                            <label>멤버 상태: <h3 class="search-result-item js-search-result">${member_state}</h3></label>
-                            <label>등록 일자: <h3 class="search-result-item js-search-result">${pay_date}</h3></label>
-                            <label>만료 일자: <h3 class="search-result-item js-search-result">${expire_date}</h3></label>
+                            <label>차량 번호: <h3 class="dynamic-data search-result-item js-search-result">${car_number}</h3></label>
+                            <label>멤버 상태: <h3 class="dynamic-data search-result-item js-search-result">${member_state}</h3></label>
+                            <label>등록 일자: <h3 class="dynamic-data search-result-item js-search-result">${pay_date}</h3></label>
+                            <label>만료 일자: <h3 class="dynamic-data search-result-item js-search-result">${expire_date}</h3></label>
                         </div>
                     </div>
                 </div>

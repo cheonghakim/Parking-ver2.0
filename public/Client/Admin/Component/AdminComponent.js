@@ -132,6 +132,7 @@ export class AdminComponent {
         switch (value) {
           case "change_charge":
             clicked = "change_charge";
+            this.pushState(clicked);
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -141,6 +142,7 @@ export class AdminComponent {
 
           case "manage_users":
             clicked = "manage_users";
+            this.pushState(clicked);
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -150,6 +152,7 @@ export class AdminComponent {
 
           case "search":
             clicked = "search";
+            this.pushState(clicked);
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -171,6 +174,7 @@ export class AdminComponent {
         switch (value) {
           case "change_charge":
             clicked = "change_charge";
+            this.pushState(clicked);
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -179,6 +183,7 @@ export class AdminComponent {
             break;
           case "manage_users":
             clicked = "manage_users";
+            this.pushState(clicked);
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -188,6 +193,7 @@ export class AdminComponent {
 
           case "search":
             clicked = "search";
+            this.pushState(clicked);
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -296,5 +302,26 @@ export class AdminComponent {
         list.append(tr);
       }
     }
+  }
+
+  pushState(clicked) {
+    const title = clicked;
+    let url;
+    switch (clicked) {
+      case "change_charge":
+        url = "/zenith/admin/change/charge";
+        break;
+      case "manage_users":
+        url = "/zenith/admin/manage/users";
+        break;
+      case "search":
+        url = "/zenith/admin/search";
+        break;
+      case "logout":
+        url = "/zenith/log/out";
+        break;
+    }
+    const data = { page: url };
+    window.history.pushState(data, title, url);
   }
 }

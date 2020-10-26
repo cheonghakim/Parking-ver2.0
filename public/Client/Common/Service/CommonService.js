@@ -48,6 +48,7 @@ export class CommonService {
   async getMemberInfo(userData) {
     let result;
     let member_dto = new MemberDTO();
+
     try {
       result = await this.api.getMemberInfo(userData);
     } catch (e) {

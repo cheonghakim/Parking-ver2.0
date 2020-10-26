@@ -114,3 +114,23 @@
   align-items: center;
   min-width: 300px;
 }
+
+.dynamic-data {
+  display: inline-block;
+}
+
+.minus-margin-20 {
+  margin-left: -20px;
+}
+
+.margin-left-15 {
+  margin-left: 15px;
+}
+
+.minus-margin-left-35 {
+  margin-left: -35px;
+}
+
+.width-400 {
+  width: 400px;
+}

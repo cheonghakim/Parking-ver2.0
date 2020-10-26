@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul class="js-delegation">
+        <li><button>Home</button> </li>
+        <li><button>User</button> </li>
+    </ul>
+    <button class="js-back" type="button">back</button>
+
+    <script>
+        const delegation = document.querySelector(".js-delegation")
+        delegation.addEventListener("click", (e)=>{
+        
+            if(e.target.tagName === "li" || e.target.tagName === "BUTTON"){
+                if(e.target.innerHTML.includes("Home")){
+                    const data = {page:"index"}
+                    const title = "Home"
+                    const url = "/zenith"
+                    window.history.pushState(data, title, url)
+                }else if(e.target.innerHTML.includes("User")){
+                    const data = {page:"user_page"}
+                    const title = "Dashboard"
+                    const url = "/zenith/dashboard"
+                    window.history.pushState(data, title, url)
+                }
+            }else {
+                console.log("You clicked invalid area!")
+            }
+        })
+        const back = document.querySelector(".js-back")
+        back.addEventListener("click", (e)=>{
+            console.log("history:" + window.history.state)
+        })
+    </script>
+</body>
+</html>
