@@ -35,25 +35,12 @@ class UserDAO {
   //갱신
   async updateMember(MemberDTO) {
     let result;
-    let query = `UPDATE members set pay_date = '${MemberDTO.getPayDate()}', pay_method = '${MemberDTO.getPayMethod()}', expire_date = '${MemberDTO.getExpireDate()}', left_days = '${MemberDTO.getLeftDays()}';`;
+    let query = `UPDATE users, members set members.pay_date = '${MemberDTO.getPayDate()}', members.pay_method = '${MemberDTO.getPayMethod()}', members.expire_date = '${MemberDTO.getExpireDate()}', members.left_days = '${MemberDTO.getLeftDays()}', users.user_class = '${MemberDTO.getUserClass()}' where users.user_car_number = '${MemberDTO.getUserCarNumber()}';`;
 
     try {
       result = await this.db.putData(query);
     } catch (e) {
       console.log("error: " + e);
-    }
-
-    return result;
-  }
-
-  async updateUser(MemberDTO) {
-    let result;
-    let query = `UPDATE users set user_class = '${MemberDTO.getUserClass()}' where user_car_number = '${MemberDTO.getUserCarNumber()}';`;
-
-    try {
-      result = await this.db.putData(query);
-    } catch (e) {
-      console.log("error:" + e);
     }
 
     return result;
@@ -97,6 +84,33 @@ class UserDAO {
       result = await this.db.getData(query);
     } catch (e) {
       console.log("error:" + e);
+    }
+
+    return result;
+  }
+
+  async updateLeftDays(MemberDTO) {
+    let result;
+
+    const query = `UPDATE members,users set members.left_days = '${MemberDTO.getLeftDays()}' where users.user_car_number = '${MemberDTO.getUserCarNumber()}';`;
+
+    try {
+      result = await this.db.putData(query);
+    } catch (e) {
+      console.log("error:" + e);
+    }
+
+    return result;
+  }
+
+  async updateLeftDaysAndState(MemberDTO) {
+    let result;
+    const query = `UPDATE members, users set members.left_days = '${MemberDTO.getLeftDays()}', members.user_state = '${MemberDTO.getUserState()}' where users.user_car_number = '${MemberDTO.getUserCarNumber()}';`;
+
+    try {
+      result = await this.db.putData(query);
+    } catch (e) {
+      console.log("error: " + e);
     }
 
     return result;

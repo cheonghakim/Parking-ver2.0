@@ -4,6 +4,10 @@ var router = express.Router();
 var bodyParser = require("body-parser");
 var jsonParser = bodyParser.json();
 
+router.get("/logout", function (req, res, next) {
+  res.clearCookie("member");
+});
+
 router.post("/login", jsonParser, function (req, res, next) {
   console.log("req-body:" + req.body);
   let userData = req.body;

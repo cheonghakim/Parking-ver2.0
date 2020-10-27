@@ -6,6 +6,30 @@ export class AdminEvent {
     this.service = new AdminService();
     this.calculation = new Calculation();
   }
+  async callMain() {
+    let result;
+
+    try {
+      result = await this.service.callMain();
+    } catch (e) {
+      console.log("error: " + e);
+    }
+
+    return result;
+  }
+
+  async logout() {
+    let result;
+
+    try {
+      result = await this.service.logout();
+    } catch (e) {
+      console.log("error: " + e);
+    }
+
+    console.log("result:" + result);
+    return result;
+  }
 
   async adminLogin(userData) {
     let result;
@@ -83,7 +107,7 @@ export class AdminEvent {
     return [
       this.calculation.base_time,
       this.calculation.base_time_charge,
-      this.calculation.base_charge,
+      this.calculation.base_charge
     ];
   }
 }

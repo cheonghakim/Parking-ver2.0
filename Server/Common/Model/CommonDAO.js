@@ -32,7 +32,7 @@ class CommonDAO {
 
   async checkIsMember(CommonDTO) {
     let result;
-    let query = `SELECT * from users where user_car_number = '${CommonDTO.getCarNumber()}';`;
+    const query = `SELECT * from users, members where (users.user_car_number = '${CommonDTO.getCarNumber()}') and (members.user_state = '${CommonDTO.getUserState()}');`;
 
     try {
       result = await this.db.getData(query);
@@ -43,18 +43,6 @@ class CommonDAO {
     return result;
   }
 
-  async getMemberData(CommonDTO) {
-    let result;
-    let query = `SELECT * from Members where um_key = '${CommonDTO.getUmKey()}';`;
-
-    try {
-      result = await this.db.getData(query);
-    } catch (e) {
-      console.log("error:" + e);
-    }
-
-    return result;
-  }
   async checkIsCar(CommonDTO) {
     let result;
     const query = `SELECT * from guests where (car_number = '${CommonDTO.getCarNumber()}') and (out_date = null);`;

@@ -9,6 +9,31 @@ export class AdminCTR {
     this.validation = new Validation();
     this.self = this;
   }
+  //callback
+  async logout() {
+    let result;
+
+    try {
+      result = await this.event.logout();
+    } catch (e) {
+      console.log("error: " + e);
+    }
+
+    console.log("result:" + result);
+    this.callMain();
+  }
+
+  async callMain() {
+    let result;
+
+    try {
+      result = await this.event.callMain();
+    } catch (e) {
+      console.log("error:" + e);
+    }
+
+    this.comp.makeMain(result);
+  }
 
   async adminLogin(userData) {
     let result;
@@ -102,24 +127,6 @@ export class AdminCTR {
     }
   }
 
-  //event delegation
-  async eventAdminMain(clicked_by_user) {
-    switch (clicked_by_user) {
-      case "change_charge":
-        this.executeAdminChangeCharge();
-        break;
-      case "manage_users":
-        this.manageUsers();
-        break;
-      case "search":
-        this.executeAdminSearch();
-        break;
-      default:
-        console.log("You clicked invalid area!");
-        break;
-    }
-  }
-
   eventBack() {
     // window.history.back();
     console.log("current-url" + window.history.state.page);
@@ -140,6 +147,34 @@ export class AdminCTR {
     }
   }
 
+  //event delegation
+  async eventAdminMain(clicked_by_user) {
+    switch (clicked_by_user) {
+      case "change_charge":
+        this.executeAdminChangeCharge();
+        break;
+      case "manage_users":
+        this.manageUsers();
+        break;
+      case "search":
+        this.executeAdminSearch();
+        break;
+      default:
+        console.log("You clicked invalid area!");
+        break;
+    }
+  }
+
+  async eventHeaderMenu(clicked) {
+    switch (clicked) {
+      case "logout":
+        this.logout();
+        break;
+      default:
+        console.log("You clicked invalid area!");
+        break;
+    }
+  }
   //화면을 구성하고 리스너를 추가한다
   executeAdminLogin() {
     this.comp.makeAdminLogin();
@@ -149,6 +184,7 @@ export class AdminCTR {
   executeAdminMain() {
     this.comp.makeAdminMain();
     this.comp.eventAdminMain(this.eventAdminMain, this.self);
+    this.comp.eventHeaderMenu(this.eventHeaderMenu, this.self);
   }
 
   executeAdminChangeCharge() {
@@ -157,17 +193,20 @@ export class AdminCTR {
     this.comp.changeCharge(this.changeCharge, this.self);
     this.comp.changeTime(this.changeTime, this.self);
     this.comp.eventBack(this.eventBack, this.self);
+    this.comp.eventHeaderMenu(this.eventHeaderMenu, this.self);
   }
 
   executeAdminManageUsers() {
     this.comp.makeManageUsers();
     this.comp.getLog(this.getLog, this.self);
     this.comp.eventBack(this.eventBack, this.self);
+    this.comp.eventHeaderMenu(this.eventHeaderMenu, this.self);
   }
 
   executeAdminSearch(result) {
     this.comp.makeSearch(result);
     this.comp.search(this.search, this.self);
     this.comp.eventBack(this.eventBack, this.self);
+    this.comp.eventHeaderMenu(this.eventHeaderMenu, this.self);
   }
 }

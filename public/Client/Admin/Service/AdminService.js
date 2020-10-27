@@ -7,6 +7,30 @@ export class AdminService {
     this.api = new AdminApi();
   }
 
+  async callMain() {
+    let result;
+
+    try {
+      result = await this.api.callMain();
+    } catch (e) {
+      console.log("error:" + e);
+    }
+
+    return result;
+  }
+
+  async logout() {
+    let result;
+
+    try {
+      result = await this.api.logout();
+    } catch (e) {
+      console.log("error: " + e);
+    }
+    console.log("result:" + result);
+    return result;
+  }
+
   async adminLogin(userData) {
     let result;
 

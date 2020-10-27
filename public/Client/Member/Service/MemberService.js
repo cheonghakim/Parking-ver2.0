@@ -5,6 +5,17 @@ export class MemberService {
   constructor() {
     this.api = new MemberApi();
   }
+  async logout() {
+    let result;
+
+    try {
+      result = await this.api.logout();
+    } catch (e) {
+      console.log("error:" + e);
+    }
+
+    return result;
+  }
 
   async callMain() {
     let result;

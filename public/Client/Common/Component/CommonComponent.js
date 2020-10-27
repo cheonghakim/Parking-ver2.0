@@ -639,40 +639,5 @@ export class CommonComponent {
         url = "/zenith";
         break;
     }
-    // switch (clicked) {
-    //   case "check_car":
-    //     url = "/zenith/check/car";
-    //     break;
-    //   case "in_car":
-    //     url = "/zenith/in/car";
-    //     break;
-    //   case "out_car":
-    //     url = "/zenith/out/car";
-    //     break;
-    //   case "pay_cash":
-    //     url = "/zenith/pay/cash";
-    //     break;
-    //   case "pay_card":
-    //     url = "/zenith/pay/card";
-    //     break;
-    //   case "register":
-    //     url = "/zenith/register";
-    //     break;
-    //   case "guest":
-    //     url = "/zenith/guest";
-    //     break;
-    //   case "member":
-    //     url = "/zenith/member/login";
-    //     break;
-    //   case "admin":
-    //     url = "/zenith/admin/login";
-    //     break;
-    //   case "pay_method":
-    //     url = "/zenith/pay/method";
-    //     break;
-    //   case "main":
-    //     url = "/zenith";
-    //     break;
-    // }
   }
 }

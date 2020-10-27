@@ -209,6 +209,28 @@ export class AdminComponent {
     }
   }
 
+  eventHeaderMenu(callback, context) {
+    if (document.querySelector(".js-admin-header-menu") !== null) {
+      const header_menu = document.querySelector(".js-admin-header-menu");
+      header_menu.addEventListener("click", e => {
+        e.preventDefault();
+        let clicked;
+
+        if (e.target.tagName === "LI" || e.target.tagName === "A") {
+          if (e.target.innerHTML.includes("로그아웃")) {
+            clicked = "logout";
+            this.pushState("logout");
+            if (typeof callback === "string") {
+              callback = context[callback(clicked)];
+            } else if (typeof callback === "function") {
+              callback.call(context, clicked);
+            }
+          }
+        }
+      });
+    }
+  }
+
   eventBack(callback, context) {
     if (document.querySelector(".js-admin-back-page") !== undefined) {
       let back = document.querySelector(".js-admin-back-page");
@@ -304,24 +326,42 @@ export class AdminComponent {
     }
   }
 
+  makeMain(result) {
+    window.document.body.innerHTML = "";
+    let div = document.createElement("div");
+    div.innerHTML = result;
+
+    window.document.body.appendChild(div);
+  }
+
   pushState(clicked) {
     const title = clicked;
+    const main = "/zenith";
+    const admin_main = "/zenith/admin";
     let url;
+    let data;
+
     switch (clicked) {
       case "change_charge":
         url = "/zenith/admin/change/charge";
+        data = { page: admin_main };
+        window.history.pushState(data, title, url);
         break;
       case "manage_users":
         url = "/zenith/admin/manage/users";
+        data = { page: admin_main };
+        window.history.pushState(data, title, url);
         break;
       case "search":
         url = "/zenith/admin/search";
+        data = { page: admin_main };
+        window.history.pushState(data, title, url);
         break;
       case "logout":
         url = "/zenith/log/out";
+        data = { page: main };
+        window.history.pushState(data, title, url);
         break;
     }
-    const data = { page: url };
-    window.history.pushState(data, title, url);
   }
 }

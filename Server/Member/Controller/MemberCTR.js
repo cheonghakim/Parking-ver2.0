@@ -132,6 +132,7 @@ class User {
 
   async searchMember(userData) {
     let result;
+    let calculate_left_days;
     const dto = new MemeberDTO();
     const user_car_number = userData.car_number;
 
@@ -145,9 +146,80 @@ class User {
 
     if (!result[0]) {
       console.log("Result error");
-      return;
+      return "failed";
+    } else {
+      calculate_left_days = this.calculateLeftDays(result);
+      if (calculate_left_days[0] === "successed") {
+        return calculate_left_days[1];
+      }
+    }
+  }
+
+  async updateLeftDays(userData) {
+    let result;
+    const dto = new MemberDTO();
+    let { left_days, user_car_number } = userData;
+
+    dto.setUserCarNumber(user_car_number);
+    dto.setLeftDays(left_days);
+
+    try {
+      result = await this.dao.updateLeftDays(dto);
+    } catch (e) {
+      console.log("error:" + e);
+    }
+
+    if (!result[0]) {
+      console.log("Result error");
+      return "failed";
+    } else {
+      return "successed";
+    }
+  }
+
+  async updateLeftDaysAndState(userData) {
+    let result;
+    const dto = new MemberDTO();
+    let { left_days, user_state, user_car_number } = userData;
+
+    dto.setUserCarNumber(user_car_number);
+    dto.setLeftDays(left_days);
+    dto.setUserState(user_state);
+
+    try {
+      result = await this.dao.updateLeftDaysAndState(dto);
+    } catch (e) {
+      console.log("error:" + e);
+    }
+
+    if (!result[0]) {
+      console.log("Result error");
+      return "failed";
     } else {
       return result;
+    }
+  }
+
+  async calculateLeftDays(userData) {
+    let now = Date.now();
+    let { expired_date, left_days, user_state } = userData[0];
+    let calculated_date = now - expired_date;
+    let a_day = 86400000;
+    let result;
+
+    if (calculated_date >= 0) {
+      left_days = Math.floor(calculated_date / a_day);
+      result = await this.updateLeftDays(userData);
+      if (!result[0]) {
+        return ["success", result];
+      }
+    } else if (calculated_date < 0) {
+      left_days = Math.floor(calculated_date / a_day);
+      user_state = -1;
+      result = await this.updateLeftDaysAndState(userData);
+      if (!result[0]) {
+        return ["success", result];
+      }
     }
   }
 }

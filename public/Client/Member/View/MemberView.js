@@ -10,6 +10,17 @@ export class MemberView {
       location.href.indexOf("/", hostIndex + 1)
     );
   }
+  makeMemberHeader() {
+    return `
+          <header>
+          <div class="header-container">
+            <div class="logo">
+              <h1>제니스 주차 타워</h1>
+            </div>
+            <nav class="header-menu "><ul class=js-header-menu""><li class="js-log-out"><a href="">로그아웃</a></li></ul></nav>
+          </div>
+        </header>`;
+  }
   makeMemberMain() {
     return ` 
 <main>

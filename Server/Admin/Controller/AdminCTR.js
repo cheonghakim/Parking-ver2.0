@@ -27,7 +27,7 @@ class Admin {
       return result;
     } else {
       console.log("result is undefined!" + result);
-      return;
+      return "failed";
     }
   }
 
@@ -49,6 +49,7 @@ class Admin {
       return result;
     } else {
       console.log("result is undefined!" + result);
+      return "failed";
     }
   }
 
@@ -65,6 +66,7 @@ class Admin {
       return result;
     } else {
       console.log("result is undefined!" + result);
+      return "failed";
     }
   }
 }

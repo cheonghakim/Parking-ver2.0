@@ -7,6 +7,18 @@ export class MemberEvent {
     this.calculation = new Calculation();
   }
 
+  async logout() {
+    let result;
+
+    try {
+      result = await this.service.logout();
+    } catch (e) {
+      console.log("error:" + e);
+    }
+
+    return result;
+  }
+
   async callMain() {
     let result;
 

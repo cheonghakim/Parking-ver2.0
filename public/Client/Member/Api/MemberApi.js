@@ -1,30 +1,40 @@
-import { Ajax } from '../../Common/Lib/Ajax.js';
+import { Ajax } from "../../Common/Lib/Ajax.js";
 
 export class MemberApi {
   constructor() {
     this.ajax = new Ajax();
   }
-  async callMain() {
-    let result 
-    
+
+  async logout() {
+    let result;
+
     try {
-      result = await this.ajax.sendAjaxGet("/zenith/main")
+      result = await this.ajax.sendAjaxGet("/zenith/member/logout");
     } catch (e) {
-      console.log("error:" + e)
+      console.log("error:" + e);
     }
 
-   return result
-}
+    return result;
+  }
+  async callMain() {
+    let result;
+
+    try {
+      result = await this.ajax.sendAjaxGet("/zenith");
+    } catch (e) {
+      console.log("error:" + e);
+    }
+
+    return result;
+  }
+
   async memberLogin(userData) {
     let result;
 
     try {
-      result = await this.ajax.sendAjaxPost(
-        '/zenith/member/login',
-        userData
-      );
+      result = await this.ajax.sendAjaxPost("/zenith/member/login", userData);
     } catch (e) {
-      console.log('error:' + e);
+      console.log("error:" + e);
     }
 
     return result;
@@ -34,12 +44,9 @@ export class MemberApi {
     let result;
 
     try {
-      result = await this.ajax.sendAjaxPost(
-        '/zenith/member/renew',
-        userData
-      );
+      result = await this.ajax.sendAjaxPost("/zenith/member/renew", userData);
     } catch (e) {
-      console.log('error:' + e);
+      console.log("error:" + e);
     }
     return result;
   }
@@ -49,11 +56,11 @@ export class MemberApi {
 
     try {
       result = await this.ajax.sendAjaxPost(
-        '/zenith/member/postpone',
+        "/zenith/member/postpone",
         userData
       );
     } catch (e) {
-      console.log('error:' + e);
+      console.log("error:" + e);
     }
 
     return result;
@@ -63,9 +70,9 @@ export class MemberApi {
     let result;
 
     try {
-      result = await this.sendAjaxPost('/zenith/member/search', userData);
+      result = await this.sendAjaxPost("/zenith/member/search", userData);
     } catch (e) {
-      console.log('error: ' + e);
+      console.log("error: " + e);
     }
 
     return result;

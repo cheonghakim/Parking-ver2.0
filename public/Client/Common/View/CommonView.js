@@ -17,7 +17,6 @@ export class CommonView {
             <div class="logo">
               <h1>제니스 주차 타워</h1>
             </div>
-            <nav class="header-menu js-header-menu">로그아웃</nav>
           </div>
         </header>`;
   }

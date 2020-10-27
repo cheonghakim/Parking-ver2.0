@@ -9,6 +9,30 @@ export class MemberCTR {
     this.validation = new Validation();
     this.self = this;
   }
+  //callback
+  async logout() {
+    let result;
+    try {
+      result = await this.event.logout();
+    } catch (e) {
+      console.log("error:" + e);
+    }
+
+    console.log("result: " + result);
+    this.callMain();
+  }
+
+  async callMain() {
+    let result;
+
+    try {
+      result = await this.event.callMain();
+    } catch (e) {
+      console.log("error:" + e);
+    }
+
+    this.comp.makeMain(result);
+  }
 
   async memberLogin(userData) {
     let result;
@@ -104,24 +128,6 @@ export class MemberCTR {
     }
   }
 
-  //event delegation
-  eventMemberMain(clicked_by_user) {
-    switch (clicked_by_user) {
-      case "postpone":
-        this.executePostpone();
-        break;
-      case "renew":
-        this.executeRenew();
-        break;
-      case "member_info":
-        this.executeMemberInfo();
-        break;
-      default:
-        console.log("You clicked invalid area!");
-        break;
-    }
-  }
-
   eventBack() {
     // window.history.back();
     console.log("current-url" + window.history.state.page);
@@ -142,10 +148,40 @@ export class MemberCTR {
     }
   }
 
+  //event delegation
+  eventMemberMain(clicked_by_user) {
+    switch (clicked_by_user) {
+      case "postpone":
+        this.executePostpone();
+        break;
+      case "renew":
+        this.executeRenew();
+        break;
+      case "member_info":
+        this.executeMemberInfo();
+        break;
+      default:
+        console.log("You clicked invalid area!");
+        break;
+    }
+  }
+
+  async eventHeaderMenu(clicked) {
+    switch (clicked) {
+      case "logout":
+        this.logout();
+        break;
+      default:
+        console.log("You clicked invalid area");
+        break;
+    }
+  }
+
   //connect with other controller
   executeMemberMain() {
     this.comp.makeMemberMain();
     this.comp.eventMemberMain(this.eventMemberMain, this.self);
+    this.comp.eventHeaderMenu(this.eventHeaderMenu, this.self);
   }
 
   executeMemberLogin() {
@@ -158,17 +194,20 @@ export class MemberCTR {
     this.comp.renew(this.renew, this.self);
     this.comp.memberSearch(this.memberSearch, this.self);
     this.comp.eventBack(this.eventBack, this.self);
+    this.comp.eventHeaderMenu(this.eventHeaderMenu, this.self);
   }
 
   executePostpone() {
     this.comp.makePostpone();
     this.comp.postpone(this.postpone, this.self);
     this.comp.eventBack(this.eventBack, this.self);
+    this.comp.eventHeaderMenu(this.eventHeaderMenu, this.self);
   }
 
   executeMemberInfo(info_result) {
     this.comp.makeMemberInfo(info_result);
     this.comp.eventBack(this.eventBack, this.self);
+    this.comp.eventHeaderMenu(this.eventHeaderMenu, this.self);
   }
 
   executeSelectPayMethod(bill, action, userData) {

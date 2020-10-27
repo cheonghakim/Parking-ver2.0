@@ -334,10 +334,31 @@ export class MemberComponent {
     }
   }
 
+  headerMenu(callback, context) {
+    if (document.querySelector(".js-header-menu") !== null) {
+      const header_menu = document.querySelector(".js-header-menu");
+      header_menu.addEventListener("click", e => {
+        e.preventDefault();
+        let clicked;
+        if (e.target.tagName === "LI" || e.target.tagName === "A") {
+          if (e.target.innerHTML.includes("로그아웃")) {
+            clicked = "logout";
+            this.pushState(logout);
+            if (typeof callback === "string") {
+              callback = context[callback(clicked)];
+            } else if (typeof callback === "function") {
+              callback.call(context, clicked);
+            }
+          }
+        }
+      });
+    }
+  }
+
   //make display
   makeRenew(result) {
     window.document.body.innerHTML = "";
-    let header = this.common_view.makeCommonHeader();
+    let header = this.member_view.makeMemberHeader();
     let main = this.member_view.makeRenew();
     let footer = this.common_view.makeCommonFooter();
     let div = document.createElement("div");
@@ -348,7 +369,7 @@ export class MemberComponent {
 
   makePostpone() {
     window.document.body.innerHTML = "";
-    let header = this.common_view.makeCommonHeader();
+    let header = this.member_view.makeMemberHeader();
     let main = this.member_view.makePostpone();
     let footer = this.common_view.makeCommonFooter();
     let div = document.createElement("div");
@@ -359,7 +380,7 @@ export class MemberComponent {
 
   makeMemberInfo(result) {
     window.document.body.innerHTML = "";
-    let header = this.common_view.makeCommonHeader();
+    let header = this.member_view.makeMemberHeader();
     let main = this.member_view.makeMemberInfo();
     let footer = this.common_view.makeCommonFooter();
     let div = document.createElement("div");
@@ -374,7 +395,7 @@ export class MemberComponent {
 
   makeMemberMain() {
     window.document.body.innerHTML = "";
-    let header = this.common_view.makeCommonHeader();
+    let header = this.member_view.makeMemberHeader();
     let main = this.member_view.makeMemberMain();
     let footer = this.common_view.makeCommonFooter();
     let div = document.createElement("div");
@@ -428,33 +449,52 @@ export class MemberComponent {
     document.body.appendChild(div);
   }
 
+  makeMain(result) {
+    window.document.body.innerHTML = "";
+    let div = document.createElement("div");
+    div.innerHTML = result;
+
+    window.document.body.appendChild(div);
+  }
+
   pushState(clicked) {
     const title = clicked;
+    const main = "/zenith";
+    const member_main = "/zenith/member";
+    const pay_method = "/zenith/pay/method";
     let url;
+    let data;
     switch (clicked) {
       case "renew":
         url = "/zenith/member/renew";
+        data = { page: member_main };
+        window.history.pushState(data, title, url);
         break;
       case "postpone":
         url = "/zenith/member/postpone";
-        break;
-      case "pay_method":
-        url = "/zenith/pay/method";
+        data = { page: member_main };
+        window.history.pushState(data, title, url);
         break;
       case "member_info":
         url = "/zenith/member/search";
+        data = { page: member_main };
+        window.history.pushState(data, title, url);
         break;
       case "cash":
         url = "/zenith/cash";
+        data = { page: pay_method };
+        window.history.pushState(data, title, url);
         break;
       case "card":
         url = "/zenith/card";
+        data = { page: pay_method };
+        window.history.pushState(data, title, url);
         break;
       case "logout":
         url = "/zenith/log/out";
+        data = { page: main };
+        window.history.pushState(data, title, url);
         break;
     }
-    const data = { page: url };
-    window.history.pushState(data, title, url);
   }
 }

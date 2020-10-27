@@ -14,10 +14,10 @@ export class AdminView {
   makeAdminHeader() {
     return ` <header>
         <div class="header-container">
-            <div class="logo">
+            <div class="admin-logo">
                 <h1>제니스 주차 타워-관리자</h1>
             </div>
-            <nav class="header-menu js-header-menu">로그아웃</nav>
+            <nav class="header-menu "><ul class=js-admin-header-menu""><li class="js-log-out"><a href="">로그아웃</a></li></ul></nav>
         </div>
     </header>`;
   }
@@ -28,7 +28,7 @@ export class AdminView {
           <div class="admin-logo">
             <h1>제니스 주차 타워 - ${admin_id} 관리자님 어서오세요.</h1>
           </div>
-          <nav class="header-menu js-header-menu">로그아웃</nav>
+          <nav class="header-menu "><ul class=js-header-menu""><li class="js-log-out"><a href="">로그아웃</a></li></ul></nav>
         </div>
       </header>`;
   }
@@ -226,7 +226,7 @@ export class AdminView {
             <div class="main-center">
                 <div class="margin-top">
                     <form class="js-search-form">
-                        <label>차량 번호: <input type="text" name="car_number" required></label>
+                        <label>차량 번호: <input type="text" name="user_car_number" required></label>
                         <button type="submit" class="js-search-btn">검색</button>
                     </form>
                     <div class="search-result-container">

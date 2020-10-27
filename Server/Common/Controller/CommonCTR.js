@@ -50,6 +50,8 @@ class CommonCTR {
   async checkIsMember(userData) {
     const dto = new CommonDTO();
     let result_check_member;
+    let member_data;
+    let log;
     let { car_number } = userData;
 
     dto.setCarNumber(car_number);
@@ -60,15 +62,16 @@ class CommonCTR {
       console.log("error:" + e);
     }
 
-    if (result_check_member[0].user_state === "1") {
-      return ["member"];
-    } else if (result_check_member[0].user_state === "-1") {
-      let um_key = result_check_member[0].u_key;
-      let member_data = this.getMemberData(um_key);
-      let log = this.getLog(userData);
-      return ["expired_member", log, member_data];
-    } else if (!result_check_member[0]) {
-      let log = this.getLog(userData);
+    if (!result_check_member[0]) {
+      if (result_check_member[0].user_state == 1) {
+        return ["member"];
+      } else if (result_check_member[0].user_state == -1) {
+        member_data = await this.getMemberData(userData);
+        log = await this.getLog(userData);
+        return ["expired_member", log, member_data];
+      }
+    } else {
+      log = await this.getLog(userData);
       return ["guest", log];
     }
   }
@@ -113,8 +116,10 @@ class CommonCTR {
       } else {
         return result;
       }
-    } else {
+    } else if (check_is_car === "being") {
       return "already";
+    } else {
+      return "failed";
     }
   }
 
@@ -131,9 +136,10 @@ class CommonCTR {
       console.log("error:" + e);
     }
 
-    if (!result[0]) {
+    if (!result[0] || result === "none") {
       return "none";
     } else {
+      console.log("???" + result);
       return "being";
     }
   }
