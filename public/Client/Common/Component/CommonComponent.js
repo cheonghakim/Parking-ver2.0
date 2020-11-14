@@ -599,7 +599,6 @@ export class CommonComponent {
         data = { page: guest };
         window.history.pushState(data, title, url);
         break;
-
       case "register":
         url = "/zenith/register";
         data = { page: guest };

@@ -30,19 +30,6 @@ export class MemberEvent {
     return result;
   }
 
-  calculateRenew(userData) {
-    let class_value = userData.get("renew_class");
-    let bill = this.calculation.autoSelectClass(class_value);
-
-    return bill;
-  }
-
-  calculatePostpone(userData) {
-    let postpone_date = this.calculation.getPostponeDate(userData);
-
-    return postpone_date;
-  }
-
   async memberLogin(userData) {
     let result;
 
@@ -116,6 +103,19 @@ export class MemberEvent {
     } else {
       return result;
     }
+  }
+
+  calculateRenew(userData) {
+    let class_value = userData.get("renew_class");
+    let bill = this.calculation.autoSelectClass(class_value);
+
+    return bill;
+  }
+
+  calculatePostpone(userData) {
+    let postpone_date = this.calculation.getPostponeDate(userData);
+
+    return postpone_date;
   }
 
   payCash(userData) {

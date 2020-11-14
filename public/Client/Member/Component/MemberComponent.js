@@ -391,6 +391,16 @@ export class MemberComponent {
 
   makeSearchResult(result) {
     console.log("SEARCH-RESULT:" + result);
+    let div = document.createElement("div");
+    div.innerHTML = result;
+
+    if (document.querySelectorAll(".js-search-result") !== null) {
+      const result_input = document.querySelectorAll(".js-search-result"); //차량번호, 멤버상태, 등록일자, 만료일자
+      result_input[0] = result.getUserCarNumber();
+      result_inpit[1] = result.getUserState();
+      result_input[2] = result.getPayDate();
+      result_input[3] = result.getExpireDate();
+    }
   }
 
   makeMemberMain() {

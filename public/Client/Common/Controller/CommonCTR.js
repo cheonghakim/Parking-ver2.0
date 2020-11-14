@@ -21,6 +21,7 @@ export class CommonCTR {
 
     //event delegation
     this.comp.eventMainButtons(this.eventMainButtons, this.self);
+    this.executeCheckCar();
   }
 
   checkCar(userData) {
@@ -37,6 +38,39 @@ export class CommonCTR {
       this.comp.pushState("in_car");
     } else if (result === "can't_come_in") {
       this.executeMain();
+    }
+  }
+
+  payCash(userData) {
+    let pay_check = this.event.payCash(userData);
+    let action = localStorage.getItem("action");
+
+    if (pay_check === "pay_success" && action === "out_car") {
+      let user_input_data = localStorage.getItem("out_car_data");
+      this.writeOutLog(user_input_data);
+    } else if (pay_check === "pay_success" && action === "register") {
+      let user_input_data = localStorage.getItem("regiter_data");
+      this.registerMember(user_input_data);
+    } else {
+      console.log("bill" + pay_check);
+      this.executeBillAgain(pay_check);
+    }
+  }
+
+  payCard(userData) {
+    let pay_check = this.event.payCard(userData);
+    let action = localStorage.getItem("action");
+    // this.event.payCard(userData);
+
+    if (pay_check === "pay_success" && action === "out_car") {
+      let user_input_data = localStorage.getItem("out_car_data");
+      this.writeOutLog(user_input_data);
+    } else if (pay_check === "pay_success" && action === "register") {
+      let user_input_data = localStorage.getItem("register_data");
+      this.registerMember(user_input_data);
+    } else {
+      alert("계산이나 액션값이 올바르지 않습니다. 관리자를 호출하세요.");
+      return;
     }
   }
 
@@ -102,39 +136,6 @@ export class CommonCTR {
 
     this.out_car_data = result;
     console.log("CTR-RESULT:" + result);
-  }
-
-  payCash(userData) {
-    let pay_check = this.event.payCash(userData);
-    let action = localStorage.getItem("action");
-
-    if (pay_check === "pay_success" && action === "out_car") {
-      let user_input_data = localStorage.getItem("out_car_data");
-      this.writeOutLog(user_input_data);
-    } else if (pay_check === "pay_success" && action === "register") {
-      let user_input_data = localStorage.getItem("regiter_data");
-      this.registerMember(user_input_data);
-    } else {
-      console.log("bill" + pay_check);
-      this.executeBillAgain(pay_check);
-    }
-  }
-
-  payCard(userData) {
-    let pay_check = this.event.payCard(userData);
-    let action = localStorage.getItem("action");
-    // this.event.payCard(userData);
-
-    if (pay_check === "pay_success" && action === "out_car") {
-      let user_input_data = localStorage.getItem("out_car_data");
-      this.writeOutLog(user_input_data);
-    } else if (pay_check === "pay_success" && action === "register") {
-      let user_input_data = localStorage.getItem("register_data");
-      this.registerMember(user_input_data);
-    } else {
-      alert("계산이나 액션값이 올바르지 않습니다. 관리자를 호출하세요.");
-      return;
-    }
   }
 
   async register(userData) {
@@ -298,18 +299,18 @@ export class CommonCTR {
     localStorage.setItem("pay_method", "cash");
   }
 
-  executeBillAgain(bill) {
-    this.comp.makePayWithCash(bill);
-    this.comp.payCash(this.payCash, this.self);
-    this.comp.eventBack(this.eventBack, this.self);
-    localStorage.setItem("pay_method", "cash");
-  }
-
   executePayCard(bill) {
     this.comp.makePayWithCard(bill);
     this.comp.payCard(this.payCard, this.self);
     this.comp.eventBack(this.eventBack, this.self);
     localStorage.setItem("pay_method", "card");
+  }
+
+  executeBillAgain(bill) {
+    this.comp.makePayWithCash(bill);
+    this.comp.payCash(this.payCash, this.self);
+    this.comp.eventBack(this.eventBack, this.self);
+    localStorage.setItem("pay_method", "cash");
   }
 
   executeGuestMain() {

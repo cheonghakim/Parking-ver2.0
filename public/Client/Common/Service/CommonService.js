@@ -21,28 +21,13 @@ export class CommonService {
 
   async outCar(userData) {
     let is_member_result;
-    let member_out_log;
-    let guest_log;
-    let expire_member_log;
-    let exxpire_member_info;
 
     try {
       is_member_result = await this.api.checkOutCarIsMember(userData);
-
-      if (is_membre_result === "0") {
-        guest_log = this.getLog(userData);
-        return ["guest", guest_log];
-      } else if (is_member_result === "1") {
-        member_out_log = this.writeOutLog(userData);
-        return ["member", member_out_log];
-      } else if (is_member_result === "-1") {
-        expire_member_log = await this.getLog(userData);
-        expire_member_info = await this.getMemberInfo(userData);
-        return ["expired", expire_member_log, exxpire_member_info];
-      }
     } catch (e) {
       console.log("error:" + e);
     }
+    return is_member_result;
   }
 
   async getMemberInfo(userData) {

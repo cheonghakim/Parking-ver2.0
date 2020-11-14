@@ -16,6 +16,7 @@ export class MemberApi {
 
     return result;
   }
+
   async callMain() {
     let result;
 

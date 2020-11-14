@@ -21,6 +21,7 @@ export class MemberView {
           </div>
         </header>`;
   }
+
   makeMemberMain() {
     return ` 
 <main>
